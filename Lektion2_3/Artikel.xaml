@@ -1,0 +1,66 @@
+﻿<Window x:Class="Lektion2_3.Artikel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lektion2_3"
+        mc:Ignorable="d"
+        Title="Artikel" Height="600" Width="1200">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="collection" Grid.Column="0" Grid.Row="0" Margin="10,10,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Top" Text="{Binding name}" FontSize="16" FontWeight="Bold" Foreground="DarkCyan"></TextBlock>
+                        <TextBlock DockPanel.Dock="Bottom" Text="{Binding beschreibung}" FontSize="12" FontStyle="Italic" Margin="25,0,0,0"></TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1 " Margin="0,20,0,0">
+            <TextBlock Text="Artikel hinzufügen" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <Grid Margin="50,50,50,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Name" Grid.Row="0"></TextBlock>
+                <TextBlock Text="Beschreibung" Grid.Row="1"></TextBlock>
+                <TextBlock Text="Größe" Grid.Row="2"></TextBlock>
+                <TextBlock Text="Farbe" Grid.Row="3"></TextBlock>
+                <TextBlock Text="Menge" Grid.Row="4"></TextBlock>
+                <TextBlock Text="Preis" Grid.Row="5"></TextBlock>
+                <TextBlock Text="Id" Grid.Row="6"></TextBlock>
+                <TextBox x:Name="tbName" Text="{Binding Model.Name}" Grid.Row="0" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbBeschreibung" Text="{Binding Model.Beschreibung}" Grid.Row="1" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbGrosse"  Text="{Binding Model.Groesse}" Grid.Row="2" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbFarbe" Text="{Binding Model.Farbe}" Grid.Row="3" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbMenge" Text="{Binding Model.Menge}" Grid.Row="4" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbPreis" Text="{Binding Model.Preis}" Grid.Row="5" Grid.Column="1" Width="auto"></TextBox>
+                <TextBox x:Name="tbId" Text="{Binding Model.id}" Grid.Row="6" Grid.Column="1" Width="auto"></TextBox>
+            </Grid>
+            <Button Content="Hinzufügen" HorizontalAlignment="Center" Margin="0,50,0,0" Padding="5" Command="{Binding AddCommand}"></Button>
+        </StackPanel>
+        <DockPanel Grid.ColumnSpan="2" Grid.Row="1" LastChildFill="False" Margin="50,10,50,0">
+            <Button DockPanel.Dock="Left" Content="Löschen" Padding="5" VerticalAlignment="Top" Command="{Binding DellCommand}"></Button>
+            <Button DockPanel.Dock="Right" Content="Zurück" Padding="5" VerticalAlignment="Top" Command="{Binding BackCommand}"></Button>
+        </DockPanel>
+    </Grid>
+</Window>
